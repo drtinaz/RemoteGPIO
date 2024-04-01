@@ -38,7 +38,7 @@ MbPage {
             }                                                                     
 
 			MbSubMenu {
-				description: qsTr("Enable/Disable Read Relays")
+				description: qsTr("Read Relay State")
 				subpage: Component { PageSettingsReadRelays {} }
 				show: enable.checked
 			}
