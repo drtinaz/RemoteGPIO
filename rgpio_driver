@@ -285,6 +285,31 @@ do
 	fi
 
 
+	##
+	## Handle reading relays Unit1 with up to 8x Relays
+	#################################
+		case $Protocol_unit1 in
+			0) # RS485
+				msg=$(echo -n $(/data/RemoteGPIO/bin/modpoll/arm-linux-gnueabihf/modpoll -m rtu -b 115200 -p none -d 8 -1 -r 2 -s 1 -c 1 -a 1 $Port_Unit1) | awk '{print $NF}')        
+				number=$(($msg))   
+				;;
+			1) # TCP
+				msg=$(echo -n $(/data/RemoteGPIO/bin/modpoll/arm-linux-gnueabihf/modpoll -m enc -1 -r 2 -c 1 -a 1 $IP_Unit1) | awk '{print $NF}')        
+				number=$(($msg))
+				;;
+		esac
+        
+	if ((number >= 0 && number <= 255)); then    
+
+		# Parsing number for writing the Relay Status
+	        i=1                                                                             
+	        for Relay in `cat $conf_unit1_relay`                                                      
+	        do
+			echo $((($number & $i) != 0)) > $Relay
+			i=$((i*2)) 
+		done
+        fi
+
 
 	##                                                                                                                                              
 	## Latency vs CPU load                                                                                                                      
