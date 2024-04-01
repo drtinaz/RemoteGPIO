@@ -289,7 +289,7 @@ do
 	fi
 
 
-	if [[ $readrelays -eq 1]]; then
+	if [ $readrelays -eq 1]; then
 			##
 			## Handle reading relays Unit1 with up to 8x Relays
 			#################################
