@@ -18,6 +18,9 @@ zero=0
 prev_const1=0
 prev_const2=0
 prev_const3=0
+prev_state1=0
+prev_state2=0
+prev_state3=0
 timer=$(date +%s)
 
 ##
@@ -299,7 +302,7 @@ do
 				;;
 		esac
         
-	if ((number >= 0 && number <= 255)); then    
+	if (( number >= 0 && number <= 255 && number != $prev_state1 )); then    
 
 		# Parsing number for writing the Relay Status
 	        i=1                                                                             
@@ -308,7 +311,8 @@ do
 			echo $((($number & $i) != 0)) > $Relay
 			i=$((i*2)) 
 		done
-        fi
+		prev_state1=$((number))
+    fi
 
 
 	##                                                                                                                                              
