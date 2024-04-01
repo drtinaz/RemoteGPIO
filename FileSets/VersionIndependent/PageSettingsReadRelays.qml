@@ -23,7 +23,7 @@ MbPage {
         	MbSwitch {                                  
             	id: readrelay                           
             	name: qsTr("Enable")                 
-				bind: [rgpioSettings, "/ReadRelay"]
+				bind: rgpioSettings
         	}         
 		}
 	}
