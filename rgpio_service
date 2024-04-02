@@ -24,7 +24,7 @@ get_IP()
 	} 
 
 latch=0
-latch2=$(cat /data/RemoteGPIO/conf/units.conf)
+#latch2=$(cat /data/RemoteGPIO/conf/units.conf)
 latch3=$(cat /data/RemoteGPIO/conf/relays.conf)
 timer=$(date +%s)
 
@@ -133,19 +133,18 @@ do
 	fi
 
 
-	if [[ $nbunit != $latch2 || $nbrelays != $latch3 ]]
-	then
+	#if [[ $nbunit != $latch2 || $nbrelays != $latch3 ]]
+	if [[ $nbrelays != $latch3 ]]; then
 		echo "rgpio_service: Configuration has been updated" >> /var/log/RemoteGPIO/current
-		latch2=$nbunit
+		#latch2=$nbunit
 		latch3=$nbrelays
-		echo $nbunit > /data/RemoteGPIO/conf/units.conf
+		#echo $nbunit > /data/RemoteGPIO/conf/units.conf
 		echo $nbrelays > /data/RemoteGPIO/conf/relays.conf
-		echo $readrelays > /data/RemoteGPIO/conf/readrelays.conf
 		svc -t /service/dbus-systemcalc-py
 		svc -t /service/dbus-digitalinputs/
 		/etc/rcS.d/S90rgpio_pins.sh
 	fi
-	latch2=$(cat /data/RemoteGPIO/conf/units.conf)
+	#latch2=$(cat /data/RemoteGPIO/conf/units.conf)
 	latch3=$(cat /data/RemoteGPIO/conf/relays.conf)
 
         ##                                                        
