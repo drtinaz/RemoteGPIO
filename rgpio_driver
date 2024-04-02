@@ -301,7 +301,7 @@ do
 					;;
 			esac
         
-		if [[ $number >= 0 && $number <= 255 && $number != $prev_statea ]]; then
+		if (( number >= 0 && number <= 255 && number != prev_statea )); then
 
 			# Parsing number for writing the Relay Status
 	    	i=1
