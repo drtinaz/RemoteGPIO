@@ -289,7 +289,7 @@ do
 	fi
 
 
-	if (( readrelays == 1)); then
+	if [[ $readrelays -eq 1 ]]; then
 			##
 			## Handle reading relays Unit1 with up to 8x Relays
 			#################################
@@ -304,7 +304,7 @@ do
 					;;
 			esac
         
-		if (( number >= 0 && number <= 255 && number != $prev_state1 )); then
+		if (( number >= 0 && number <= 255 && number != prev_state1 )); then
 
 			# Parsing number for writing the Relay Status
 	    	i=1
@@ -331,7 +331,7 @@ do
 						;;
 				esac
         
-			if (( number >= 0 && number <= 255 && number != $prev_state2 )); then
+			if (( number >= 0 && number <= 255 && number != prev_state2 )); then
 
 				# Parsing number for writing the Relay Status
 	    		i=1
@@ -360,7 +360,7 @@ do
 						;;
 				esac
         
-			if (( number >= 0 && number <= 255 && number != $prev_state3 )); then
+			if (( number >= 0 && number <= 255 && number != prev_state3 )); then
 
 				# Parsing number for writing the Relay Status
 	    		i=1
