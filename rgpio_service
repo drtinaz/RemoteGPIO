@@ -25,7 +25,7 @@ get_IP()
 
 latch=0
 #latch2=$(cat /data/RemoteGPIO/conf/units.conf)
-latch3=$(cat /data/RemoteGPIO/conf/relays.conf)
+latch3=0
 timer=$(date +%s)
 
 while true
