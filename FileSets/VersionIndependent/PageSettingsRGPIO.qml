@@ -35,13 +35,7 @@ MbPage {
                 text: qsTr("Changing the configuration requires to reboot Venus OS")
                 wrapMode: Text.WordWrap                                       
                 show: enable.checked                                          
-            }                                                                     
-
-			MbSubMenu {
-				description: qsTr("Read Relay State")
-				subpage: Component { PageSettingsReadRelays {} }
-				show: enable.checked
-			}
+            }
 
 			MbSubMenu {
 				description: qsTr("Unit 1")
@@ -60,18 +54,6 @@ MbPage {
 				subpage: Component { PageSettingsUnit3 {} }
 				show: enable.checked && numberunits.value == 3
 			}
-                                 
-            MbItemOptions {
-                id: latency
-                description: qsTr("Latency")
-                bind: [rgpioSettings, "/Latency"]                            
-                show: enable.checked   
-                possibleValues: [   
-                    MbOption {description: qsTr("Minimum Latency - CPU load will be high"); value: 0},
-                    MbOption {description: qsTr("Medium Latency - CPU load will be arround 4%"); value: 0.1},
-                    MbOption {description: qsTr("High Latency - CPU load will be low"); value: 0.9}
-                ]  
-        	}
 		}
 	}
 }
