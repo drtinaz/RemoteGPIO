@@ -56,6 +56,20 @@ if [ $scriptAction == 'INSTALL' ] ; then
 	#touch /data/RemoteGPIO/conf/relays.conf
 	#chmod 666 /data/RemoteGPIO/conf/relays.conf
 	#echo "0" > /data/RemoteGPIO/conf/relays.conf
+	
+	# add install-script to rc.local to be ready for firmware update
+	filename=/data/rc.local
+	if [ ! -f $filename ]
+	then
+    	touch $filename
+    	chmod 777 $filename
+    	echo "#!/bin/bash" >> $filename
+    	echo >> $filename
+	fi
+
+	# if not alreay added, then add to rc.local
+	grep -qxF "bash /etc/rcS.d/S90rgpio_pins.sh" $filename || echo "bash /etc/rcS.d/S90rgpio_pins.sh" >
+
 
 	
 	##
@@ -97,6 +111,7 @@ if [ $scriptAction == 'UNINSTALL' ] ; then
 	
 	
 	#rm -f /etc/rcS.d/S90rgpio_pins.sh
+	awk '!/rgpio/' /data/rc.local > /data/rc.local.tmp && mv /data/rc.local.tmp /data/rc.local
 
 
 	##

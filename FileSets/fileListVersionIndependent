@@ -3,4 +3,3 @@
 /opt/victronenergy/gui/qml/PageSettingsUnit2.qml
 /opt/victronenergy/gui/qml/PageSettingsUnit3.qml
 /etc/venus/gpio_list
-/etc/rcS.d/S90rgpio_pins.sh
