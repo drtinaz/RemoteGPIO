@@ -68,7 +68,7 @@ if [ $scriptAction == 'INSTALL' ] ; then
 	fi
 
 	# if not alreay added, then add to rc.local
-	grep -qxF "bash /etc/rcS.d/S90rgpio_pins.sh" $filename || echo "bash /etc/rcS.d/S90rgpio_pins.sh" >
+	grep -qxF "bash /etc/rcS.d/S90rgpio_pins.sh" /data/rc.local || echo "bash /etc/rcS.d/S90rgpio_pins.sh" >> /data/rc.local
 
 
 	
