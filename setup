@@ -77,9 +77,9 @@ if [ $scriptAction == 'INSTALL' ] ; then
 	## Install and launch RemoteGPIO Services
 	#########################################
 	
-	ln -sf /data/RemoteGPIO/service/rgpio /service/rgpio
+	#ln -sf /data/RemoteGPIO/service/rgpio /service/rgpio
 	#ln -sf /data/RemoteGPIO/FileSets/VersionIndependent/S90rgpio_pins.sh /etc/rcS.d/S90rgpio_pins.sh
-	kill $(ps | grep '{rgpio_driver}' | grep -v grep | awk '{print $1}') 2>/dev/null
+	#kill $(ps | grep '{rgpio_driver}' | grep -v grep | awk '{print $1}') 2>/dev/null
 	/etc/rcS.d/S90rgpio_pins.sh
 	
 
@@ -92,8 +92,8 @@ fi
 if [ $scriptAction == 'UNINSTALL' ] ; then
     logMessage "++ Uninstalling RemoteGPIO"
 
-	svc -d /service/rgpio
-	kill $(ps | grep '{rgpio_service}' | grep -v grep | awk '{print $1}') 2>/dev/null
+	#svc -d /service/rgpio
+	#kill $(ps | grep '{rgpio_service}' | grep -v grep | awk '{print $1}') 2>/dev/null
 	
 	
 	#rm -f /etc/rcS.d/S90rgpio_pins.sh
@@ -145,7 +145,7 @@ if [ $scriptAction == 'UNINSTALL' ] ; then
 	rm -f /dev/gpio/digital_input_j
 	rm -f /dev/gpio/digital_input_k
 	
-	rm -f /service/rgpio
+	#rm -f /service/rgpio
 	rm -Rf /data/RemoteGPIO/conf
 	
 	
@@ -159,5 +159,5 @@ fi
 logMessage "completed"
 	
 # thats all folks - SCRIPT EXITS INSIDE THE FUNCTION
-endScript INSTALL_FILES ADD_DBUS_SETTINGS
+endScript INSTALL_FILES ADD_DBUS_SETTINGS INSTALL_SERVICES
 
