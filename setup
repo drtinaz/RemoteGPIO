@@ -78,7 +78,7 @@ if [ $scriptAction == 'INSTALL' ] ; then
 	#########################################
 	
 	ln -sf /data/RemoteGPIO/service/rgpio /service/rgpio
-	ln -sf /data/RemoteGPIO/FileSets/VersionIndependent/S90rgpio_pins.sh /etc/rcS.d/S90rgpio_pins.sh
+	#ln -sf /data/RemoteGPIO/FileSets/VersionIndependent/S90rgpio_pins.sh /etc/rcS.d/S90rgpio_pins.sh
 	kill $(ps | grep '{rgpio_driver}' | grep -v grep | awk '{print $1}') 2>/dev/null
 	/etc/rcS.d/S90rgpio_pins.sh
 	
@@ -96,7 +96,7 @@ if [ $scriptAction == 'UNINSTALL' ] ; then
 	kill $(ps | grep '{rgpio_service}' | grep -v grep | awk '{print $1}') 2>/dev/null
 	
 	
-	rm -f /etc/rcS.d/S90rgpio_pins.sh
+	#rm -f /etc/rcS.d/S90rgpio_pins.sh
 
 
 	##
