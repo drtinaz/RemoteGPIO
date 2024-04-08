@@ -9,8 +9,6 @@
 # Description:       rgpio is used to conect expternal Relay box with ModBus/RTU control
 ### END INIT INFO
 
-nbunit=$(cat /data/RemoteGPIO/conf/units.conf)
-
 # Kill existing rgpio_service in case the script is called after HW configuration change:
 kill $(ps | grep '{rgpio_service}' | grep -v grep | awk '{print $1}') 2>/dev/null
 
@@ -23,7 +21,7 @@ set_setting()
 		dbus-send --print-reply=literal --system --type=method_call --dest=com.victronenergy.settings $1 com.victronenergy.BusItem.SetValue $2  
     }
 
-
+nbunit=$(get_setting /Settings/RemoteGPIO/NumberUnits)
 nbrelayunit1=$(get_setting /Settings/RemoteGPIO/Unit1/NumRelays)
 nbrelayunit2=$(get_setting /Settings/RemoteGPIO/Unit2/NumRelays)
 nbrelayunit3=$(get_setting /Settings/RemoteGPIO/Unit3/NumRelays)
