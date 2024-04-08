@@ -48,8 +48,6 @@ latency=$(dbus -y com.victronenergy.settings  /Settings/RemoteGPIO/Latency GetVa
 ###########################################
 
 nbunit=$(get_setting /Settings/RemoteGPIO/NumberUnits)
-#readrelays=$(get_setting /Settings/RemoteGPIO/ReadRelays)
-readrelays=0
 case $nbunit in
 		0)
 			# Do nothing
@@ -93,7 +91,7 @@ esac
 while true
 do
 
-
+	readrelays=$(get_setting /Settings/RemoteGPIO/ReadRelays)
 	##
 	## Handle Unit1 with up to 8x Relays 
 	#################################
