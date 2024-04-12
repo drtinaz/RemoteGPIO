@@ -10,7 +10,8 @@
 ### END INIT INFO
 
 # Kill existing rgpio_service in case the script is called after HW configuration change:
-kill $(ps | grep '{rgpio_service}' | grep -v grep | awk '{print $1}') 2>/dev/null
+#kill $(ps | grep '{rgpio_monitor}' | grep -v grep | awk '{print $1}') 2>/dev/null
+svc -d /service/rgpio_monitor
 
 get_setting()                                                                                                                                                                                                  
     {                                                                                                                                                                                                      
@@ -361,9 +362,10 @@ fi
 #Service
 svc -t /service/dbus-systemcalc-py
 svc -t /service/dbus-digitalinputs
-[ ! -f /service/rgpio ] && ln -sf /data/RemoteGPIO/service/rgpio /service/rgpio
+svc -u /service/rgpio_monitor
+#[ ! -f /service/rgpio ] && ln -sf /data/RemoteGPIO/service/rgpio /service/rgpio
 
 #For managing reboot of Dingtian IOT devices
-nohup /data/RemoteGPIO/rgpio_service >/dev/null 2>&1 &
+#nohup /data/RemoteGPIO/rgpio_service >/dev/null 2>&1 &
 
 exit 0
