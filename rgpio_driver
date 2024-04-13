@@ -41,7 +41,7 @@ get_string()
 		dbus-send --print-reply=literal --system --type=method_call --dest=com.victronenergy.settings $1 com.victronenergy.BusItem.GetValue | awk '/variant/ { print $2 }'
 	}
 
-latency=$(dbus -y com.victronenergy.settings  /Settings/RemoteGPIO/Latency GetValue)
+#latency=$(dbus -y com.victronenergy.settings  /Settings/RemoteGPIO/Latency GetValue)
 
 ##
 ## Handle up to 3 units and multi-protocol
@@ -374,7 +374,7 @@ do
 	##
 	## Latency vs CPU load
 	#################################
-    sleep $latency
+    sleep 0.2 #$latency
 
 
 
