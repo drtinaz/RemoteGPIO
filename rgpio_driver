@@ -41,8 +41,12 @@ get_string()
 		dbus-send --print-reply=literal --system --type=method_call --dest=com.victronenergy.settings $1 com.victronenergy.BusItem.GetValue | awk '/variant/ { print $2 }'
 	}
 
-readrelays=$(get_setting /Settings/RemoteGPIO/ReadRelays)
-readdigin=$(get_setting /Settings/RemoteGPIO/ReadDigin)
+readrelays1=$(get_setting /Settings/RemoteGPIO/Unit1/ReadRelays)
+readdigin1=$(get_setting /Settings/RemoteGPIO/Unit1/ReadDigin)
+readrelays2=$(get_setting /Settings/RemoteGPIO/Unit2/ReadRelays)
+readdigin2=$(get_setting /Settings/RemoteGPIO/Unit2/ReadDigin)
+readrelays3=$(get_setting /Settings/RemoteGPIO/Unit3/ReadRelays)
+readdigin3=$(get_setting /Settings/RemoteGPIO/Unit3/ReadDigin)
 
 #latency=$(dbus -y com.victronenergy.settings  /Settings/RemoteGPIO/Latency GetValue)
 
@@ -206,7 +210,7 @@ do
 		##
 		## Handle Unit1 with up to 8x Digital_Inputs
 		#################################
-	if [[ $readdigin -eq 1 ]]; then
+	if [[ $readdigin1 -eq 1 ]]; then
 			case $Protocol_unit1 in
 				0) # RS485
 					msg=$(echo -n $(/data/RemoteGPIO/bin/modpoll/arm-linux-gnueabihf/modpoll -m rtu -b 115200 -p none -d 8 -1 -r 11 -s 1 -c 1 -a 1 $Port_Unit1) | awk '{print $NF}')
@@ -228,10 +232,12 @@ do
 					i=$((i*2))
 				done
     	fi
+	fi
 
 		##
         	## Handle Unit2 with up to 8x Digital_Inputs
         	#################################
+	if [[ $readdigin2 -eq 1 ]]; then
 		if [[ $nbunit -eq 2 || $nbunit -eq 3 ]]
         	then
 				case $Protocol_unit2 in
@@ -257,10 +263,12 @@ do
         		fi
 		
 		fi
+	fi
 
 		##
         	## Handle Unit3 with up to 8x Digital_Inputs
         	#################################
+	if [[ $readdigin3 -eq 1 ]]; then
 		if [[ $nbunit -eq 3 ]]
         	then
 				case $Protocol_unit3 in
@@ -290,7 +298,7 @@ do
 	fi
 
 
-	if [[ $readrelays -eq 1 ]]; then
+	if [[ $readrelays1 -eq 1 ]]; then
 			##
 			## Handle reading relays Unit1 with up to 8x Relays
 			#################################
@@ -316,10 +324,12 @@ do
 			done
 			prev_statea=$((number))
     	fi
+	fi
 
 		##
 		## Handle reading relays Unit2 with up to 8x Relays
 		#################################
+	if [[ $readrelays2 -eq 1 ]]; then
 		if [[ $nbunit -eq 2 || $nbunit -eq 3 ]]; then
 				case $Protocol_unit2 in
 					0) # RS485
@@ -344,11 +354,13 @@ do
 				prev_stateb=$((number))
     		fi
 		fi
+	fi
 
 
 		##
 		## Handle reading relays Unit3 with up to 8x Relays
 		#################################
+	if [[ $readrelays3 -eq 1 ]]; then
 		if [[ $nbunit -eq 3 ]]; then
 				case $Protocol_unit3 in
 					0) # RS485

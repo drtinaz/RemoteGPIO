@@ -55,6 +55,11 @@ MbPage {
                     MbOption {description: qsTr("USB2"); value: "/dev/ttyUSB2"}
                 ]
             }
+
+			MbSubMenu {
+				description: qsTr("Additional Options")
+				subpage: Component { PageSettingsUnit2Options {} }
+			}
                         
         	MbItemText {                                                               
             	text: qsTr("Relay module needs to be configured with Addr = 2. This applies for both RS485 and TCP protocols. When using TCP both TCP server and TCP client protocols must select RTU over TCP. Total number of relays for ALL connected modules MUST NOT exceed 16!")     
