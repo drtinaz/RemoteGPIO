@@ -59,7 +59,7 @@ MbPage {
             	id: restart                           
             	name: qsTr("Restart RemoteGPIO Service")
 				bind: [rgpioSettings, "/Restart"]
-				show: enabled.checked                 
+				show: enable.checked                 
         	}         
 		
 			MbItemOptions {
