@@ -13,26 +13,17 @@ MbPage {
 
 	model: VisualModels {
 		VisibleItemModel {
-         
-		MbItemText {                                                               
-            	text: qsTr("Enable reading the digital inputs of the connected relay module")     
-            	wrapMode: Text.WordWrap                                            
-        	} 
+          
 
         	MbSwitch {                                  
             	id: readdigin                           
-            	name: qsTr("Enable")                 
+            	name: qsTr("Enable Digital Inputs")                 
 				bind: [rgpioSettings, "/ReadDigin"]
-        	}
-
-            MbItemText {                                                               
-            	text: qsTr("Users that have relay modules that are able to be controlled outside of the venus device (ie. relays that can be switched from devices/switches that are connected directly to the relay module) may find this feature useful. Enabling this feature will cause RemoteGPIO to poll the relay modules for current state and dynamically update the GUI")     
-            	wrapMode: Text.WordWrap                                            
         	} 
 
         	MbSwitch {                                  
             	id: readrelay                           
-            	name: qsTr("Enable")                 
+            	name: qsTr("Enable Reading Relay State")                 
 				bind: [rgpioSettings, "/ReadRelays"]
         	}
 
