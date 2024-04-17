@@ -7,7 +7,7 @@
 ## END INIT INFO
 
 exec 2>&1
-/etc/rcS.d/S90rgpio_pins.sh
+#/etc/rcS.d/S90rgpio_pins.sh
 
 get_setting()
 	{
@@ -59,6 +59,7 @@ do
                         then
                                 svc -u /service/rgpio_driver
                                 echo "rgpio_driver: Starting RemoteGPIO driver" >> /var/log/RemoteGPIO/current
+								/etc/rcS.d/S90rgpio_pins.sh
 			fi
 			latch=$((service))
 			;;
