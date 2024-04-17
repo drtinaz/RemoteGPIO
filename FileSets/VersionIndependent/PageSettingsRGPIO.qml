@@ -32,7 +32,7 @@ MbPage {
             }
 
             MbItemText {                
-                text: qsTr("Changing the configuration requires to reboot Venus OS")
+                text: qsTr("Changing the configuration requires to restart service")
                 wrapMode: Text.WordWrap                                       
                 show: enable.checked                                          
             }                                                                     
