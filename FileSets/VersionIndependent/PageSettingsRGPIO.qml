@@ -54,6 +54,24 @@ MbPage {
 				subpage: Component { PageSettingsUnit3 {} }
 				show: enable.checked && numberunits.value == 3
 			}
+
+			MbSwitch {                                  
+            	id: restart                           
+            	name: qsTr("Restart RemoteGPIO Service")
+				bind: [rgpioSettings, "/Restart"]
+				show: enabled.checked                 
+        	}         
+		
+			MbItemOptions {
+            	id: confirm
+            	description: qsTr("PLEASE CONFIRM")
+				bind: serviceSetting
+            	show: restart.checked
+            	possibleValues: [
+                	MbOption {description: qsTr("Restart Service"); value: 3},
+                	MbOption {description: qsTr("Do Not Restart Service"); value: 1}
+            	]
+        	}
                                  
             MbItemOptions {
                 id: latency

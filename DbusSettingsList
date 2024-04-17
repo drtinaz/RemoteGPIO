@@ -1,5 +1,6 @@
 {"path":"/Settings/Services/RemoteGPIO", "default":0}
 {"path":"/Settings/RemoteGPIO/NumberUnits", "default":0}
+{"path":"/Settings/RemoteGPIO/Restart", "default":0}
 {"path":"/Settings/RemoteGPIO/Unit1/ReadRelays", "default":0}
 {"path":"/Settings/RemoteGPIO/Unit1/ReadDigin", "default":0}
 {"path":"/Settings/RemoteGPIO/Unit2/ReadRelays", "default":0}

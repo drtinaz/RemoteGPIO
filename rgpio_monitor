@@ -43,7 +43,7 @@ do
 			then
 				svc -d /service/rgpio_driver
 				echo "rgpio_driver: Stopping RemoteGPIO driver" >> /var/log/RemoteGPIO/current
-				set_setting /Settings/RemoteGPIO/NumberUnits variant:int32:0
+				#set_setting /Settings/RemoteGPIO/NumberUnits variant:int32:0
 				/etc/rcS.d/S90rgpio_pins.sh
 				#svc -t /service/dbus-systemcalc-py
 				#svc -t /service/dbus-digitalinputs/
@@ -110,8 +110,22 @@ do
                     set_setting /Settings/Services/RemoteGPIO variant:int32:1
             	fi                                                                                                            
 			fi
-			latch=$((service))
+			#latch=$((service))
 			;;	
+		3)
+			##
+			## Restart Service
+			###########################
+			if [ $service != $latch ]
+                then
+                    svc -t /service/rgpio_driver
+                    echo "rgpio_driver: Restarting RemoteGPIO driver" >> /var/log/RemoteGPIO/current
+					/etc/rcS.d/S90rgpio_pins.sh
+					set_setting /Settings/Services/RemoteGPIO variant:int32:1
+					set_setting /Settings/RemoteGPIO/Restart variant:int32:0
+			fi
+			#latch=$((service))
+			;;
 	esac
 			
 		##

@@ -26,6 +26,7 @@ nbunit=$(get_setting /Settings/RemoteGPIO/NumberUnits)
 nbrelayunit1=$(get_setting /Settings/RemoteGPIO/Unit1/NumRelays)
 nbrelayunit2=$(get_setting /Settings/RemoteGPIO/Unit2/NumRelays)
 nbrelayunit3=$(get_setting /Settings/RemoteGPIO/Unit3/NumRelays)
+service=$(get_setting /Settings/Services/RemoteGPIO)
 
 ## Find total number of relays for all modules
 if [ $nbunit -eq 1 ]
@@ -43,6 +44,10 @@ if [ $nbunit -eq 3 ]
     nbrelays=$(($nbrelayunit1 + $nbrelayunit2 + $nbrelayunit3))
 fi
 
+if [ $service -eq 0 ]
+    then
+    nbrelays=0
+fi
 
 # Clean existing gpio in case HW configuration has changed
 rm -f /dev/gpio/relay_3
