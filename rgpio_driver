@@ -41,6 +41,9 @@ get_string()
 		dbus-send --print-reply=literal --system --type=method_call --dest=com.victronenergy.settings $1 com.victronenergy.BusItem.GetValue | awk '/variant/ { print $2 }'
 	}
 
+readrelays=$(get_setting /Settings/RemoteGPIO/ReadRelays)
+readdigin=$(get_setting /Settings/RemoteGPIO/ReadDigin)
+
 #latency=$(dbus -y com.victronenergy.settings  /Settings/RemoteGPIO/Latency GetValue)
 
 ##
@@ -91,8 +94,7 @@ esac
 while true
 do
 
-	readrelays=$(get_setting /Settings/RemoteGPIO/ReadRelays)
-	readdigin=$(get_setting /Settings/RemoteGPIO/ReadDigin)
+
 	##
 	## Handle Unit1 with up to 8x Relays 
 	#################################
