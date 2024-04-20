@@ -179,5 +179,5 @@ do
 
 
 	#Reduce CPU load
-	sleep 1	
+	sleep 2
 done
