@@ -15,18 +15,6 @@ MbPage {
 		VisibleItemModel {
           
 
-        	MbSwitch {                                  
-            	id: readdigin                           
-            	name: qsTr("Enable Digital Inputs")                 
-				bind: [rgpioSettings, "/ReadDigin"]
-        	} 
-
-        	MbSwitch {                                  
-            	id: readrelay                           
-            	name: qsTr("Enable Reading Relay State")                 
-				bind: [rgpioSettings, "/ReadRelays"]
-        	}
-
 			MbSwitch {                                  
             	id: reboot                           
             	name: qsTr("Reboot Unit 1?")                 
