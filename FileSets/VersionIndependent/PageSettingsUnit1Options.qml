@@ -43,7 +43,6 @@ MbPage {
                 	MbOption {description: qsTr("Yes, Reboot please"); value: 2}
             	]
         	}
-
 		}
 	}
 }
