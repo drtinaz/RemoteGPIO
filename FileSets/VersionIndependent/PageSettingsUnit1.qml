@@ -39,7 +39,7 @@ MbPage {
 			}
                         
         	MbItemText {                                                               
-            	text: qsTr("Relay module needs to be configured with Addr = 1. Total number of relays for ALL connected modules MUST NOT exceed 16!")     
+            	text: qsTr("Relay module needs to be configured with Addr = 1. TCP Service must be set to Modbus-TCP. Total number of relays for ALL connected modules MUST NOT exceed 16!")     
             	wrapMode: Text.WordWrap                                            
         	}    
 		}
