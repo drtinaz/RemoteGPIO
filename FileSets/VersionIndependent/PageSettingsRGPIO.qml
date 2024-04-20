@@ -72,18 +72,6 @@ MbPage {
                 	MbOption {description: qsTr("Do Not Restart Service"); value: 1}
             	]
         	}
-                                 
-            #MbItemOptions {
-            #    id: latency
-            #    description: qsTr("Latency")
-            #    bind: [rgpioSettings, "/Latency"]                            
-            #    show: enable.checked   
-            #    possibleValues: [   
-            #        MbOption {description: qsTr("Minimum Latency - CPU load will be #high"); value: 0},
-            #        MbOption {description: qsTr("Medium Latency - CPU load will be #arround 4%"); value: 0.1},
-            #        MbOption {description: qsTr("High Latency - CPU load will be low"); #value: 0.9}
-            #    ]  
-        	#}
 		}
 	}
 }
