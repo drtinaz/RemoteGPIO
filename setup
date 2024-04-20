@@ -26,7 +26,7 @@ fi
 # to include this package in SetupHelper automatic updates
 
 packageGitHubUser="drtinaz"
-packageGitHubBranch="dev"
+packageGitHubBranch="dev2"
 
 
 #### running manually and OK to proceed - prompt for input
@@ -48,11 +48,6 @@ if [ $scriptAction == 'INSTALL' ] ; then
 	##############################################################
 	tar -xvf /data/RemoteGPIO/FileSets/VersionIndependent/sys.tar.gz -C /data/RemoteGPIO/
 	tar -xvf /data/RemoteGPIO/FileSets/VersionIndependent/bin.tar.gz -C /data/RemoteGPIO/
-	mkdir /data/RemoteGPIO/conf
-	chmod 777 /data/RemoteGPIO/conf
-	touch /data/RemoteGPIO/conf/relays.conf
-	chmod 666 /data/RemoteGPIO/conf/relays.conf
-	echo "0" > /data/RemoteGPIO/conf/relays.conf
 
 	
 	##
@@ -126,8 +121,6 @@ if [ $scriptAction == 'UNINSTALL' ] ; then
 	rm -f /dev/gpio/digital_input_i
 	rm -f /dev/gpio/digital_input_j
 	rm -f /dev/gpio/digital_input_k
-	
-	rm -Rf /data/RemoteGPIO/conf
 	
 	
 		
